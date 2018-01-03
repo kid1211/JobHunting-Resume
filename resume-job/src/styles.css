@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+.floatRight {
+  position: absolute;
+  right: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(190, 46%, 36%)!important;
+}
+
+* {
+  /*font-family: */
+}
+
+p,
+span {
+  font-size: 12pt;
+}
+
+ul,
+li {
+  margin-bottom: 30px;
+}

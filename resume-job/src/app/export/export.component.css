@@ -1,0 +1,62 @@
+.floatRight {
+  display: none;
+}
+
+a {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.outerDataList>li>ul:nth-child(1),
+.list-inline {
+  list-style-type: none;
+  overflow: hidden;
+  padding-left: 0px;
+}
+
+.outerDataList>li>ul:nth-child(1)>li,
+.list-inline>li {
+  float: left;
+  border-right: 2px solid #5b97bf;
+  margin: 8px 0px;
+  padding: 0px 8px;
+  vertical-align: center;
+  /* height: 5px; */
+}
+
+.outerDataList>li>ul:nth-child(1) {
+  margin-left: -10px;
+}
+
+.outerDataList>li>ul:nth-child(1)>li:last-child,
+.list-inline>li:last-child {
+  border-right: none;
+}
+
+h4 {
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(190, 46%, 36%)!important;
+}
+
+.DataList,
+.lowData>ul {
+  padding-left: 17px;
+}
+
+.outerDataList {
+  padding-left: 0px;
+  list-style-type: none;
+}
+
+
+/* ul>li {
+  list-style-type: none;
+} */
