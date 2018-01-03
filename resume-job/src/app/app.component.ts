@@ -15,4 +15,6 @@ export class AppComponent {
       return "exportClass";
     }
   }
+
+  items = [1, 2, 3, 4, 5];
 }

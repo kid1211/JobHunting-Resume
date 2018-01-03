@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { templateJitUrl } from '@angular/compiler';
 
+
 @Injectable()
 export class HeroService {
 
@@ -55,7 +56,12 @@ export class HeroService {
    */
   /** userInfo:
    * index1:
-   * null
+   * [
+   * name,
+   * content,
+   * summary
+   * ]
+   * 
    * index2:
    * [
    *  contentIndex
@@ -88,19 +94,23 @@ export class HeroService {
    * ]
    */
   setData(data, index0, index1, index2): Observable<null> {
-    console.log(index0, index1, index2);
+    // console.log(index0, index1, index2);
     switch (index0) {
       case 6://user data
         //userinfo
         switch (index1) {
           case 0:
             console.log("name: ", data);
+            // USER, SKILLS, WORKHISTROY, EDUCATION, PROJECTS, VOLUNTEER, OTHERS 
+            USER.name = data;
             break;
           case 1:
             console.log("content " + index2[0] + ": ", data);
+            USER.content[index2[0]] = data;
             break;
           case 2:
             console.log("summary: ", data);
+            USER.summary = data;
             break;
           default:
             console.log("Data storage error, index1.");
@@ -109,24 +119,27 @@ export class HeroService {
         break;
       case 0:
         console.log("skills -> content " + index2[0] + ": ", data);
+        SKILLS.content[index2[0]].content = data;
         break;
       case 4:
         console.log("volunteer -> content " + index2[0] + ": ", data);
+        VOLUNTEER.content[index2[0]].content = data;
         break;
       case 5:
         console.log("others -> content " + index2[0] + ": ", data);
+        OTHERS.content[index2[0]].content = data;
         break;
 
       case 1:
-        let tempString = highDataAttr(index1, index2);
+        highDataAttr(WORKHISTROY, index1, index2, data);
         // console.log("others -> content " + index2[0] + ": ", data);
-        console.log("the " + index2[0] + " work history " + tempString + " :" + data);
         break;
       case 2: ;
-        console.log("the " + index2[0] + "education " + tempString + " :" + data);
+        highDataAttr(EDUCATION, index1, index2, data);
+
         break;
       case 3: ;
-        console.log("the " + index2[0] + "projects " + tempString + " :" + data);
+        highDataAttr(PROJECTS, index1, index2, data);
         break;
       default:
         console.log("Data storage error, type.");
@@ -138,21 +151,43 @@ export class HeroService {
 
 }
 
-function highDataAttr(index1, index2) {
-  let rtnString = "";
+function highDataAttr(constData, index1, index2, data) {
+
+  // console.log("the " + index2[0] + " work history " + tempString + " :" + data);
+  // console.log("the " + index2[0] + "education " + tempString + " :" + data);
+  // console.log("the " + index2[0] + "projects " + tempString + " :" + data);
+  // let rtnString = "";
+
+  // console.log(index1, index2, data);
   switch (index1) {
     case 0:
-      return "where ";
+      // return "where ";
+      // console.log(constData.content[index2[0]].where);
+      constData.content[index2[0]].where = data;
+      break;
     case 1:
-      return "when ";
+      // return "when ";
+      constData.content[index2[0]].when = data;
+      break;
     case 2:
-      return "title ";
+      // return "title ";
+      constData.content[index2[0]].title = data;
+      break;
     case 3:
       //description
-      return "description " + index2[1];
+      // return "description " + index2[1];
+
+      constData.content[index2[0]].description[index2[1]] = data;
+      break;
     case 4:
       //content
-      return "description " + index2[2];
+      // return "description " + index2[2];
+
+      constData.content[index2[0]].content[index2[2]].content = data;
+      break;
+    default:
+      console.log("something dumb happended");
+      break;
   }
 }
 

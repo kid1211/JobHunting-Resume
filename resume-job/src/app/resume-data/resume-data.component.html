@@ -1,9 +1,12 @@
 <div *ngIf="lowData" class="resumeData lowData">
-  <ul class="DataList">
+  <ul class="DataList" [sortablejs]="items" [sortablejsOptions]="options">
     <li *ngFor="let row of lowData.content;let idx = index" [style.display]="row.selected ? 'list-item' : 'none'">
       <div class="floatRight">
         <button class="btn btn-sm btn-outline-primary" (click)="open(null,idx)">
           <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button [cbContent]="row.content" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+          <i class="fa fa-files-o" aria-hidden="true"></i>
         </button>
       </div>
       {{row.content}}
@@ -20,6 +23,9 @@
             <button class="btn btn-sm btn-outline-primary" (click)="open(2,idx)">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
+            <button [cbContent]="row.title" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+              <i class="fa fa-files-o" aria-hidden="true"></i>
+            </button>
           </div>
           <h4>{{row.title}}</h4>
         </li>
@@ -27,6 +33,9 @@
           <div class="floatRight">
             <button class="btn btn-sm btn-outline-primary" (click)="open(0,idx)">
               <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button [cbContent]="row.where" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+              <i class="fa fa-files-o" aria-hidden="true"></i>
             </button>
           </div>
           <h4>{{row.where}}</h4>
@@ -36,25 +45,34 @@
             <button class="btn btn-sm btn-outline-primary" (click)="open(1,idx)">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
+            <button [cbContent]="row.when" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+              <i class="fa fa-files-o" aria-hidden="true"></i>
+            </button>
           </div>
           <h4>{{row.when}}</h4>
         </li>
       </ul>
-      <ul class="DataList" *ngIf="row.description">
+      <ul class="DataList" *ngIf="row.description" [sortablejs]="items" [sortablejsOptions]="options">
         <li *ngFor="let innerRow of row.description;let idx2 = index">
           <div class="floatRight">
             <button class="btn btn-sm btn-outline-primary" (click)="open(3,idx,idx2)">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
+            <button [cbContent]="innerRow" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+              <i class="fa fa-files-o" aria-hidden="true"></i>
+            </button>
           </div>
           {{innerRow}}
         </li>
       </ul>
-      <ul class="DataList" *ngIf="row.content">
+      <ul class="DataList" *ngIf="row.content" [sortablejs]="items" [sortablejsOptions]="options">
         <li *ngFor="let innerRow of row.content;let idx2 = index" [style.display]="innerRow.selected ? 'list-item' : 'none'">
           <div class="floatRight">
             <button class="btn btn-sm btn-outline-primary" (click)="open(4,idx,idx2)">
               <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button [cbContent]="innerRow.content" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+              <i class="fa fa-files-o" aria-hidden="true"></i>
             </button>
           </div>
           {{innerRow.content}}

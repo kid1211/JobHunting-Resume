@@ -1,11 +1,14 @@
-<p>
-  dashboard works!
-</p>
-<!-- <app-modal-component [name]="1"></app-modal-component> -->
-<p>You can pass an existing component as content of the modal window. In this case remember to add content component as an
-  <code>entryComponents</code> section of your
-  <code>NgModule</code>.</p>
-
-<button class="btn btn-sm btn-outline-primary" (click)="open()">
-  <i class="fa fa-pencil" aria-hidden="true"></i>
-</button>
+<div id="search-component">
+  <h4>Requirement Search</h4>
+  <p>
+    Currently support indeed, glassdoor, careerbeacon. Let us know what to add
+  </p>
+  <input [(ngModel)]="searchText" placeholder="enter search term here">
+  <button (click)="search()">search</button>
+  <ul>
+    <li *ngFor="let row of requirements">
+      {{row}}
+      <input class="floatRight" id="checkBox" type="checkbox">
+    </li>
+  </ul>
+</div>

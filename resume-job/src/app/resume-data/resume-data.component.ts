@@ -4,6 +4,8 @@ import { ResumeType, HeroService } from '../hero.service';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponentComponent } from '../modal-component/modal-component.component';
 
+import { SortablejsOptions } from 'angular-sortablejs';
+
 @Component({
   selector: 'app-resume-data',
   templateUrl: './resume-data.component.html',
@@ -12,9 +14,16 @@ import { ModalComponentComponent } from '../modal-component/modal-component.comp
 export class ResumeDataComponent implements OnInit {
 
   @Input() rType: number;
+  options: SortablejsOptions;
 
-
-  constructor(private heroService: HeroService, private modalService: NgbModal) { }
+  constructor(private heroService: HeroService, private modalService: NgbModal) {
+    this.options = {
+      onUpdate: (event: any) => {
+        // this.postChangesToServer();
+        console.log(this);
+      }
+    };
+  }
 
   ngOnInit() {
 
@@ -41,6 +50,10 @@ export class ResumeDataComponent implements OnInit {
       default:
         break;
     }
+
+
+
+
   }
 
   lowData: LowData;
@@ -102,14 +115,18 @@ export class ResumeDataComponent implements OnInit {
           case 0:
             // where
             modalRef.componentInstance.data = this.highData.content[index2].where;
+            modalRef.componentInstance.index2 = [index2, null, null];
             break;
           case 1:
             // when
             modalRef.componentInstance.data = this.highData.content[index2].when;
+
+            modalRef.componentInstance.index2 = [index2, null, null];
             break;
           case 2:
             //title
             modalRef.componentInstance.data = this.highData.content[index2].title;
+            modalRef.componentInstance.index2 = [index2, null, null];
             break;
           case 3:
             // description
@@ -136,7 +153,6 @@ export class ResumeDataComponent implements OnInit {
     // @Input() index0;
     // @Input() index1;
     // @Input() index2;
-
 
 
   }

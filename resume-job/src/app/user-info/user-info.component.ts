@@ -13,7 +13,10 @@ import { ModalComponentComponent } from '../modal-component/modal-component.comp
 export class UserInfoComponent implements OnInit {
 
   constructor(private heroService: HeroService, private modalService: NgbModal) { }
+
   user: User;
+  isCopied: boolean = false;
+
   ngOnInit() {
     this.getUser();
   }
@@ -25,7 +28,7 @@ export class UserInfoComponent implements OnInit {
   open(index1, index2) {
     const modalRef = this.modalService.open(ModalComponentComponent);
 
-    modalRef.componentInstance.index0 = 0;
+    modalRef.componentInstance.index0 = 6;
     modalRef.componentInstance.index1 = index1;//6 menas user database
     modalRef.componentInstance.index2 = null;
 

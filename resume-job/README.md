@@ -13,7 +13,8 @@
 
 # Dependency
 https://github.com/ng-bootstrap/ng-bootstrap
-
+https://www.npmjs.com/package/ngx-clipboard
+https://github.com/sortablejs/angular-sortablejs useless one, find one to replace it
 # ResumeJob
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.

@@ -3,6 +3,9 @@
     <button class="btn btn-sm btn-outline-primary" (click)="open(0)">
       <i class="fa fa-pencil" aria-hidden="true"></i>
     </button>
+    <button [cbContent]="user.name" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+      <i class="fa fa-files-o" aria-hidden="true"></i>
+    </button>
   </div>
   <a class="navbar-brand " routerLink="/resume">
     <h1 id="nameInfo">{{user.name}}</h1>
@@ -15,6 +18,9 @@
       <button class="btn btn-sm btn-outline-primary" (click)="open(1,idx)">
         <i class="fa fa-pencil" aria-hidden="true"></i>
       </button>
+      <button [cbContent]="row" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+        <i class="fa fa-files-o" aria-hidden="true"></i>
+      </button>
     </div>
     {{row}}
   </li>
@@ -23,6 +29,9 @@
 <div class="floatRight">
   <button class="btn btn-sm btn-outline-primary" (click)="open(2)">
     <i class="fa fa-pencil" aria-hidden="true"></i>
+  </button>
+  <button [cbContent]="user.summary" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+    <i class="fa fa-files-o" aria-hidden="true"></i>
   </button>
 </div>
 <p>{{user.summary}}</p>

@@ -17,6 +17,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 /* Feature Modules */
 import { ClipboardModule } from 'ngx-clipboard';
+/** Reorder list */
+import { SortablejsModule } from 'angular-sortablejs';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import { ClipboardModule } from 'ngx-clipboard';
     AppRoutingModule,
     FormsModule,
     NgbModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 150 }),
     ClipboardModule,
+    HttpModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
