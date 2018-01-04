@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 import { ModalComponentComponent } from '../modal-component/modal-component.component';
 
 import { SortablejsOptions } from 'angular-sortablejs';
+import { isComponentView } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'app-resume-data',
@@ -20,7 +21,14 @@ export class ResumeDataComponent implements OnInit {
     this.options = {
       onUpdate: (event: any) => {
         // this.postChangesToServer();
-        console.log(this);
+        console.log(event);
+        // old index new index
+
+        // type, isContent, oldindex, newindex
+        let isContent = event.from.id;
+        // console.log(isContent);
+        this.heroService.reOrder(this.rType, event.oldIndex, event.newIndex, event.from.id);
+
       }
     };
   }

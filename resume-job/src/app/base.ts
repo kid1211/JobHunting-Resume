@@ -43,3 +43,8 @@ export class User {
   content: [string];
   summary: string;
 }
+
+
+export class Requirements {
+  content: [string];
+}

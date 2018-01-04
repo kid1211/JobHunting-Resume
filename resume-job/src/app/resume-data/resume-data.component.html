@@ -1,5 +1,5 @@
 <div *ngIf="lowData" class="resumeData lowData">
-  <ul class="DataList" [sortablejs]="items" [sortablejsOptions]="options">
+  <ul class="DataList" [sortablejs]="row" [sortablejsOptions]="options">
     <li *ngFor="let row of lowData.content;let idx = index" [style.display]="row.selected ? 'list-item' : 'none'">
       <div class="floatRight">
         <button class="btn btn-sm btn-outline-primary" (click)="open(null,idx)">
@@ -52,7 +52,7 @@
           <h4>{{row.when}}</h4>
         </li>
       </ul>
-      <ul class="DataList" *ngIf="row.description" [sortablejs]="items" [sortablejsOptions]="options">
+      <ul class="DataList" [attr.id]="'baad-'+idx" *ngIf="row.description" [sortablejs]="items" [sortablejsOptions]="options">
         <li *ngFor="let innerRow of row.description;let idx2 = index">
           <div class="floatRight">
             <button class="btn btn-sm btn-outline-primary" (click)="open(3,idx,idx2)">
@@ -65,7 +65,7 @@
           {{innerRow}}
         </li>
       </ul>
-      <ul class="DataList" *ngIf="row.content" [sortablejs]="items" [sortablejsOptions]="options">
+      <ul class="DataList" [attr.id]="'good-'+idx" *ngIf="row.content" [sortablejs]="items" [sortablejsOptions]="options">
         <li *ngFor="let innerRow of row.content;let idx2 = index" [style.display]="innerRow.selected ? 'list-item' : 'none'">
           <div class="floatRight">
             <button class="btn btn-sm btn-outline-primary" (click)="open(4,idx,idx2)">

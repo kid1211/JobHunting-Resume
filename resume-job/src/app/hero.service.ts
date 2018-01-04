@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HighData, LowData, User } from './base';
-import { USER, SKILLS, WORKHISTROY, EDUCATION, PROJECTS, VOLUNTEER, OTHERS } from './mock-resume';
+import { HighData, LowData, User, Requirements } from './base';
+import { REQUIREMENTS, USER, SKILLS, WORKHISTROY, EDUCATION, PROJECTS, VOLUNTEER, OTHERS } from './mock-resume';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { templateJitUrl } from '@angular/compiler';
+import { isComponentView } from '@angular/core/src/view/util';
 
 
 @Injectable()
 export class HeroService {
 
+  searched: Boolean;
+
   constructor() { }
 
+  isSearched(isSearch): Boolean {
+    if (isSearch == true || false) {
+      this.searched = isSearch;
+      return isSearch;
+    }
+    else {
+      return this.searched;
+    }
+  }
+  getRequirements(): Observable<Requirements> {
+    return of(REQUIREMENTS);
+  }
   getUser(): Observable<User> {
     return of(USER);
   }
@@ -38,6 +53,50 @@ export class HeroService {
   getOthers(): Observable<LowData> {
     return of(OTHERS);
   }
+
+
+
+  reOrder(type, oldindex, newindex, highID): Observable<null> {
+    // type, isContent, oldindex, newindex
+    // console.log(type, isContent, oldindex, newindex);
+    let temp;
+    let isContent = highID.slice(0, 5) == 'good-';//either good- or baad-
+    let highindex = highID.slice(5);//number index for which object
+    console.log(highindex);
+    switch (type) {
+      case 0:
+        //  USER.content
+        temp = SKILLS.content;
+        break;
+      case 1:
+        if (isContent) temp = WORKHISTROY.content[highindex].content;
+        else temp = WORKHISTROY.content[highindex].description;
+        break;
+      case 2:
+        if (isContent) temp = EDUCATION.content[highindex].content;
+        else temp = EDUCATION.content[highindex].description;
+        break;
+      case 3:
+        if (isContent) temp = PROJECTS.content[highindex].content;
+        else temp = PROJECTS.content[highindex].description;
+        break;
+      case 4:
+        temp = VOLUNTEER.content;
+        break;
+      case 5:
+        temp = OTHERS.content;
+        break;
+      default:
+        console.log('reorder is bad');
+        break;
+    }
+
+
+    move(temp, oldindex, newindex);
+    console.log(temp);
+    return null;
+  }
+
 
   /**   index0= type
     * index1 = typeofData;
@@ -213,3 +272,9 @@ export enum ResumeType {
  *  6->0 name
  *  6->1 summary 
 */
+
+
+function move(array, from, to) {
+  array.splice(to, 0, array.splice(from, 1)[0]);
+  return array;
+};
