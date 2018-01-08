@@ -1,0 +1,10 @@
+.userInfo {
+  width: 100%;
+  border-bottom: 2px solid hsl(190, 46%, 36%);
+}
+
+#nameInfo {
+  color: hsl(190, 46%, 36%);
+  margin-bottom: 10px;
+}
+

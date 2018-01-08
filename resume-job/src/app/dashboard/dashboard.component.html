@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>Requirement Search</h4>
+  <p>
+    Currently support indeed, glassdoor, careerbeacon. Let us know what to add
+  </p>
+  <input [(ngModel)]="searchText" placeholder="enter search term here">
+  <button (click)="search()">search</button>
+  <ul>
+    <li *ngFor="let row of requirements">
+      {{row}}
+      <input class="floatRight" id="checkBox" type="checkbox">
+    </li>
+  </ul>
+</div>

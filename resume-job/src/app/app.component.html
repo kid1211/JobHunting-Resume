@@ -1,0 +1,20 @@
+<h1 id="siteTitle" [ngClass]="getRoute()">Welcome to {{title}} !</h1>
+
+<nav class="navbar navbar-inverse bg-primary" [ngClass]="getRoute()">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="navbar-brand " routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="navbar-brand " routerLink="/resume">Edit-Resume</a>
+    </li>
+    <li class="nav-item">
+      <a class="navbar-brand " routerLink="/export">Export-Resume</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="seperator"></div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

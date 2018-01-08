@@ -1,0 +1,37 @@
+<div class="userInfo">
+  <div class="floatRight">
+    <button class="btn btn-sm btn-outline-primary" (click)="open(0)">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </button>
+    <button [cbContent]="user.name" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+      <i class="fa fa-files-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <a class="navbar-brand " routerLink="/resume">
+    <h1 id="nameInfo">{{user.name}}</h1>
+  </a>
+</div>
+<ul class="list-inline">
+
+  <li *ngFor="let row of user.content;let idx = index">
+    <div class="floatRight">
+      <button class="btn btn-sm btn-outline-primary" (click)="open(1,idx)">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
+      <button [cbContent]="row" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+        <i class="fa fa-files-o" aria-hidden="true"></i>
+      </button>
+    </div>
+    {{row}}
+  </li>
+</ul>
+<h2> Objective</h2>
+<div class="floatRight">
+  <button class="btn btn-sm btn-outline-primary" (click)="open(2)">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </button>
+  <button [cbContent]="user.summary" class="btn btn-sm btn-outline-primary" type="button" ngxClipboard>
+    <i class="fa fa-files-o" aria-hidden="true"></i>
+  </button>
+</div>
+<p>{{user.summary}}</p>

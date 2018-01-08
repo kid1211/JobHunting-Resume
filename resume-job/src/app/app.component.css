@@ -1,0 +1,24 @@
+#siteTitle {
+  margin: 80px;
+  font-size: 60px;
+}
+
+.seperator {
+  margin: 50px;
+}
+
+.nav>li {
+  margin: 0px;
+}
+
+.nav>li>a {
+  color: #0374d8;
+  background: white;
+  margin: 10px;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.exportClass {
+  display: none;
+}
